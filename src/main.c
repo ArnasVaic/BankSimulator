@@ -1,6 +1,11 @@
+#include <time.h>
+
 #include <input.h>
-// started at 10:20
+#include <bank_sim.h>
+
 int main(int argc, char** argv) {
+
+    srand(time(NULL));
 
     if(argc == 1) {
         printf("Usage: %s filename\n", argv[0]);
@@ -16,6 +21,13 @@ int main(int argc, char** argv) {
     printf("%s", get_error(c1));
 
     printf("%s\n", filename);
-    printf("%zu\n%f\n%f\n", params.cashier_cnt, params.time_per_client, params.client_chance);
+
+    printf("Iterations: %zu\n", params.iterations);
+    printf("Cashier cnt: %zu\n", params.cashier_cnt);
+    printf("Iterations per client: %zu\n", params.time_per_client);
+    printf("Chance of client per iteration: %zu%%\n", params.client_chance);
+
+    simulate_bank(params);
+
     return 0;
 }
