@@ -14,12 +14,14 @@ int get_input_params(const char * filename, params_t * params) {
 
     if(is == NULL) return INPUT_INVALID_FILE_NAME;
 
+    fscanf(is, "%zu", &params->iterations);
+    if(feof(is)) return INPUT_INVALID_FILE;
     fscanf(is, "%zu", &params->cashier_cnt);
     if(feof(is)) return INPUT_INVALID_FILE;
-    fscanf(is, "%lf", &params->time_per_client);
+    fscanf(is, "%zu", &params->time_per_client);
     if(feof(is)) return INPUT_INVALID_FILE;
-    fscanf(is, "%lf", &params->client_chance);
-    
+    fscanf(is, "%zu", &params->client_chance);
+
     fclose(is);
 
     return INPUT_GOOD;

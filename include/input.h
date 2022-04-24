@@ -13,10 +13,18 @@ enum input_error_codes {
 };
 
 typedef struct params_t {
+    size_t iterations;
     size_t cashier_cnt;
-    double time_per_client;
-    double client_chance;
+    size_t time_per_client;
+    size_t client_chance;
 } params_t;
+
+typedef struct results_t {
+    size_t min_wait_time;
+    size_t max_wait_time;
+    size_t max_queue_length;
+    size_t avg_cashier_busyness;
+} results_t;
 
 /// Parse command line arguments
 /// @param argc arg count (in)
